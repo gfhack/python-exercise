@@ -5,7 +5,7 @@ from requests.exceptions import RequestException
 
 from celery import Celery
 
-app = Celery('tasks', backend='redis://localhost', broker='redis://localhost')
+app = Celery('tasks', backend='redis://localhost', broker='librabbitmq://localhost')
 
 @app.task
 def add(x, y):
