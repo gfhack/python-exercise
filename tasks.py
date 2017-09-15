@@ -12,8 +12,8 @@ def add(x, y):
     return x + y
 
 
-@app.task(default_retry_delay=5, autoretry_for=(RequestException,), retry_backoff=True)
+@app.task(default_retry_delay=5, autoretry_for=(RequestException,), retry_backoff=True, max_retries=None)
 def users():
-        url = 'http://localhost:3000/users/1'
-        req = requests.get(url)
-        return json.loads(req.text)
+    url = 'http://localhost:3000/users/1'
+    req = requests.get(url)
+    return json.loads(req.text)
